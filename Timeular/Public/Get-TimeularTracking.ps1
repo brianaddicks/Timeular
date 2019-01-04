@@ -2,11 +2,13 @@ function Get-TimeularTracking {
     [CmdletBinding()]
 
     Param (
+        [Parameter(Mandatory = $false)]
+        [switch]$AutoConnect
     )
 
     $VerbosePrefix = "Get-TimeularTracking:"
 
-    $Response = Invoke-TimeularApiCall -Endpoint '/tracking' -Body $Body -Method 'GET'
+    $Response = Invoke-TimeularApiCall -Endpoint '/tracking' -Body $Body -Method 'GET' -AutoConnect:$AutoConnect
     $Response = $Response.currentTracking
 
     if ($null -eq $Response) {

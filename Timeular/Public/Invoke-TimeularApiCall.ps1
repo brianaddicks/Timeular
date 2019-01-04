@@ -9,10 +9,16 @@ function Invoke-TimeularApiCall {
         [string]$Body,
 
         [Parameter(Mandatory = $false, Position = 2)]
-        [string]$Method = 'GET'
+        [string]$Method = 'GET',
+
+        [Parameter(Mandatory = $false)]
+        [switch]$AutoConnect
     )
 
     $VerbosePrefix = "Invoke-TimeularApiCall:"
+    if ($AutoConnect) {
+        Connect-Timeular
+    }
 
     $BaseUri = 'https://api.timeular.com/api/v2'
 

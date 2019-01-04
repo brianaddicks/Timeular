@@ -2,9 +2,11 @@ function Connect-Timeular {
     [CmdletBinding()]
 
     Param (
+        [PoshBot.FromConfig()]
         [Parameter(Mandatory = $false, Position = 0)]
         [string]$TimeularApiKey = $global:TimeularApiKey,
 
+        [PoshBot.FromConfig()]
         [Parameter(Mandatory = $false, Position = 1)]
         [string]$TimeularApiSecret = $global:TimeularApiSecret
     )
