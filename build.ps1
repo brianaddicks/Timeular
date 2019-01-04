@@ -41,6 +41,8 @@ function Resolve-Module {
 # Grab nuget bits, install modules, set build variables, start build.
 Get-PackageProvider -Name NuGet -ForceBootstrap | Out-Null
 
+Get-Command Export-Metadata
+
 Resolve-Module PoshBot, Psake, PSDeploy, Pester, BuildHelpers
 
 Set-BuildEnvironment -Force
