@@ -5,7 +5,10 @@ function Resolve-Module {
     param
     (
         [Parameter(Mandatory)]
-        [string[]]$Name
+        [string[]]$Name,
+
+        [Parameter()]
+        [switch]$AllowClobber
     )
 
     Process {
@@ -23,7 +26,7 @@ function Resolve-Module {
 
                     Write-Verbose -Message "$($ModuleName) Installed Version [$($Version.tostring())] is outdated. Installing Gallery Version [$($GalleryVersion.tostring())]"
 
-                    Install-Module -Name $ModuleName -Force
+                    Install-Module -Name $ModuleName -Force -AllowClobber:$AllowClobber
                     Import-Module -Name $ModuleName -Force -RequiredVersion $GalleryVersion
                 } else {
                     Write-Verbose -Message "Module Installed, Importing $($ModuleName)"
@@ -31,7 +34,7 @@ function Resolve-Module {
                 }
             } else {
                 Write-Verbose -Message "$($ModuleName) Missing, installing Module"
-                Install-Module -Name $ModuleName -Force
+                Install-Module -Name $ModuleName -Force -AllowClobber:$AllowClobber
                 Import-Module -Name $ModuleName -Force -RequiredVersion $Version
             }
         }
