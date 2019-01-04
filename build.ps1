@@ -44,28 +44,9 @@ function Resolve-Module {
 # Grab nuget bits, install modules, set build variables, start build.
 Get-PackageProvider -Name NuGet -ForceBootstrap | Out-Null
 
-Write-Verbose "Checking before modules"
-Get-Command Export-Metadata
+Resolve-Module PoshBot, Psake, PSDeploy, Pester
 
-Resolve-Module PoshBot
-Get-Command Export-Metadata
-Write-Verbose "Checking after PoshBot"
-
-Resolve-Module Psake
-Get-Command Export-Metadata
-Write-Verbose "Checking after Psake"
-
-Resolve-Module PSDeploy
-Get-Command Export-Metadata
-Write-Verbose "Checking after PSDeploy"
-
-Resolve-Module Pester
-Get-Command Export-Metadata
-Write-Verbose "Checking after Pester"
-
-Resolve-Module BuildHelpers -AllowClobber
-Get-Command Export-Metadata
-Write-Verbose "Checking after BuildHelpers"
+Resolve-Module BuildHelpers -AllowClobber #Poshbot use Configuration, which has an overlapping cmdlet: Export-Metadata, this may bite me later, dunno.
 
 
 Set-BuildEnvironment -Force
