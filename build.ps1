@@ -63,7 +63,7 @@ Resolve-Module Pester
 Get-Command Export-Metadata
 Write-Verbose "Checking after Pester"
 
-Resolve-Module BuildHelpers
+Resolve-Module BuildHelpers -AllowClobber
 Get-Command Export-Metadata
 Write-Verbose "Checking after BuildHelpers"
 
