@@ -48,7 +48,6 @@ Resolve-Module PoshBot, Psake, PSDeploy, Pester
 
 Resolve-Module BuildHelpers -AllowClobber #Poshbot use Configuration, which has an overlapping cmdlet: Export-Metadata, this may bite me later, dunno.
 
-
 Set-BuildEnvironment -Force
 
 Invoke-psake .\psake.ps1

@@ -3,12 +3,14 @@ function Connect-Timeular {
 
     Param (
         [PoshBot.FromConfig()]
-        [Parameter(Mandatory = $false, Position = 0)]
-        [string]$TimeularApiKey = $global:TimeularApiKey,
+        [Parameter(Mandatory = $true, Position = 0)]
+        [string]$TimeularApiKey,
+        #[string]$TimeularApiKey = $global:TimeularApiKey,
 
         [PoshBot.FromConfig()]
-        [Parameter(Mandatory = $false, Position = 1)]
-        [string]$TimeularApiSecret = $global:TimeularApiSecret
+        [Parameter(Mandatory = $true, Position = 1)]
+        #[string]$TimeularApiSecret = $global:TimeularApiSecret
+        [string]$TimeularApiSecret
     )
 
     $VerbosePrefix = "Connect-Timeular:"
